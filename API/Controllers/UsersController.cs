@@ -1,4 +1,5 @@
-﻿using API.Data;
+﻿using System.Runtime.CompilerServices;
+using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,36 +9,41 @@ namespace API;
 [Route("api/[Controller]")]
 public class UsersController : ControllerBase
 {
-  
+
     private readonly DataContext _context;
 
     public UsersController(DataContext context)
     {
-        _context = context;       
+        _context = context;
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<AppUser>> GetUsers(){
-        return _context.Users.ToList();
+    public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
+    {
+        return await _context.Users.ToListAsync();
     }
 
     [HttpGet("{id}")]
-    public ActionResult<AppUser> GetUser(int id){
-        return _context.Users.Find(id);
+    public async Task<ActionResult<AppUser>> GetUser(int id)
+    {
+        return await _context.Users.FindAsync(id);
     }
 
     [HttpPost]
-    public int UpdateUser(AppUser user){
-        var result = _context.Users.Find(user.Id);
-        if (result==null) return -1;
-        _context.Users.Attach(user);
-        return _context.SaveChanges();
+    public async Task<ActionResult<AppUser>> UpdateUser(AppUser user)
+    {
+        var result = await _context.Users.FindAsync(user.Id);
+        if (result == null) return NotFound();
+        _context.Users.Where(u=>u.Id==user.Id); //.ExecuteUpdate();
+        _context.SaveChanges();
+        return Ok();
     }
 
     [HttpDelete]
-    public int DeleteUserById(int id) {
-        var result = _context.Users.Find(id);
-        if (result==null) return -1;    
+    public async Task<ActionResult<int>> DeleteUserById(int id)
+    {
+        var result = await _context.Users.FindAsync(id);
+        if (result == null) return -1;
         _context.Users.Remove(result);
         return _context.SaveChanges();
     }
