@@ -6,30 +6,31 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using API.ServiceExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<DataContext>(opt=> opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")) );
+builder.Services.AddDbContext<DataContext>(opt=> opt.UseSqlite(
+    builder.Configuration.GetConnectionString("DefaultConnection")) );
 builder.Services.AddCors();
 
 builder.Services.AddScoped<ITokenService, TokenService>();
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options=>{
-    options.TokenValidationParameters = new TokenValidationParameters{
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["TokenKey"])),
-        ValidateIssuer = false,
-        ValidateAudience = false
-    };
-});
+builder.Services.AddApplicationServicesExtension(builder.Configuration);
+builder.Services.AddIdentityServiceExtension(builder.Configuration);
 
 var app = builder.Build();
-app.UseCors(builder=>builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+app.UseCors(builder=>builder.AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .WithOrigins("https://localhost:4200"));
 
 app.UseHttpsRedirection();
 
+//Authenttication is for if you are qualified to do  
+app.UseAuthentication();
+//authorization is for what you can do
 app.UseAuthorization();
 
 app.MapControllers();

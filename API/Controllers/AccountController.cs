@@ -18,9 +18,13 @@ namespace API.Controllers
 
     public class AccountController : BaseApiController
     {
+        /// <summary>
+        /// AccountController: used for new user registration, and registered user 
+        /// login authentication and authorization
+        /// </summary>
         private readonly DataContext _context;
         private readonly ITokenService _tokenService;
-
+        // Dependency injection: Datacontext and TokenService
         public AccountController(DataContext context, ITokenService tokenService){
             _context = context;
             _tokenService = tokenService;

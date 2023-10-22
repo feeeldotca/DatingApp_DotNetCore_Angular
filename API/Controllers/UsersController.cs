@@ -7,10 +7,19 @@ using Microsoft.EntityFrameworkCore;
 // using DTOs.RegisterDTO;
 
 namespace API.Controllers;
+/// <summary>
+/// this arritribute would allow only authenticated users to the AccountController, 
+/// except for GetUsers() action, which is accessible by everyone, regardless of their
+/// authenticated or unauthenticated/anonymous status.
+/// [AllowAnonmous] on controller level> [Authorize] on action or even controller level
+/// </summary>
 [Authorize]
 public class UsersController : BaseApiController
 {
-
+    /// <summary>
+    /// UsersController: used for DB's exsiting user read/update/delete process
+    /// we can allow authorize attribute or allowanonymous attribute here
+    /// </summary>
     private readonly DataContext _context;
 
     public UsersController(DataContext context)
