@@ -41,6 +41,13 @@ namespace API.Controllers
             return user;
         }
 
+        [HttpPost("login")]
+         public async Task<AppUser> Login(LoginDTO loginDTO){
+         
+            if(UserExists(loginDTO.u))
+         }
+
+
         private Task<bool> UserExists(string username) {
             return _context.Users.AnyAsync(x => x.UserName==username.ToLower());  // For comparing two names 
         }
