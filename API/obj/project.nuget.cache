@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "iQ25P3bWoFzMizwHWqRzmkqFchsPJVGx2tb11qVLbpu9BTICRTDjAqXDZh+Ds2He0vnzmllAs1zfXVCxW824Ig==",
+  "dgSpecHash": "FwFAlLf8TyPjFCDZtDoYN2x/196EzQj6G1KPvKegnBHbwZAcfPNUnQ/lACJ1sRZsdk4QCHr8OqGe/FtwTmM4qw==",
   "success": true,
   "projectFilePath": "/Users/kenzhang/Projects/DatingApp_DotNetCore_Angular/API/API.csproj",
   "expectedPackageFiles": [
     "/Users/kenzhang/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
+    "/Users/kenzhang/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.12/microsoft.aspnetcore.authentication.jwtbearer.7.0.12.nupkg.sha512",
     "/Users/kenzhang/.nuget/packages/microsoft.data.sqlite.core/7.0.12/microsoft.data.sqlite.core.7.0.12.nupkg.sha512",
     "/Users/kenzhang/.nuget/packages/microsoft.entityframeworkcore/7.0.12/microsoft.entityframeworkcore.7.0.12.nupkg.sha512",
     "/Users/kenzhang/.nuget/packages/microsoft.entityframeworkcore.abstractions/7.0.12/microsoft.entityframeworkcore.abstractions.7.0.12.nupkg.sha512",
@@ -29,6 +30,8 @@
     "/Users/kenzhang/.nuget/packages/microsoft.identitymodel.abstractions/7.0.3/microsoft.identitymodel.abstractions.7.0.3.nupkg.sha512",
     "/Users/kenzhang/.nuget/packages/microsoft.identitymodel.jsonwebtokens/7.0.3/microsoft.identitymodel.jsonwebtokens.7.0.3.nupkg.sha512",
     "/Users/kenzhang/.nuget/packages/microsoft.identitymodel.logging/7.0.3/microsoft.identitymodel.logging.7.0.3.nupkg.sha512",
+    "/Users/kenzhang/.nuget/packages/microsoft.identitymodel.protocols/6.15.1/microsoft.identitymodel.protocols.6.15.1.nupkg.sha512",
+    "/Users/kenzhang/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/6.15.1/microsoft.identitymodel.protocols.openidconnect.6.15.1.nupkg.sha512",
     "/Users/kenzhang/.nuget/packages/microsoft.identitymodel.tokens/7.0.3/microsoft.identitymodel.tokens.7.0.3.nupkg.sha512",
     "/Users/kenzhang/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "/Users/kenzhang/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
