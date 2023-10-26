@@ -11,4 +11,8 @@ export class AccountService {
   login(model: any) {
     return this.http.post(this.baseUrl + 'account/login', model);
   }
+
+  logout(model: any) {
+    return this.http.post(this.baseUrl + 'account/logout', model);
+  }
 }

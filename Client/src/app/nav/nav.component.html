@@ -12,8 +12,19 @@
           <li class="nav-item">
             <a class="nav-link">Messages</a>
           </li>
+          <li class="nav-item" (click)="logout()">
+            <a class="nav-link">Logout</a>
+          </li>
         </ul>
-        <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off" class="d-flex">
+
+        <div class="dropdown"  *ngIf="loggedIn" dropdown>  
+            <a class="dropdown-toggle text-light" dropdownToggle>Welsome User</a>
+            <div class="dropdown-menu" *dropdownMenu>
+                <a class="dropdown-item">Edit Profile</a>
+                <a href="" class="dropdown-item" (click)="logout()">Logout</a>
+            </div>
+        </div>
+        <form  *ngIf="!loggedIn" #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off" class="d-flex">
           <input name="username" class="form-control me-2" type="text" placeholder="Username" [(ngModel)]="model.username">
           <input name="password" class="form-control me-2" type="password" placeholder="Password" [(ngModel)]="model.password">
           <button class="btn btn-outline-success" type="submit">Login</button>
