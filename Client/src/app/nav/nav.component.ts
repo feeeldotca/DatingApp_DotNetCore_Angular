@@ -9,25 +9,15 @@ import { User } from '../_models/user';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit{
-  constructor(private accountService: AccountService){}
+  constructor(public accountService: AccountService){}
   model: any = {};
-  currentUser$: Observable<User | null> = of(null);
-  loggedIn: boolean = false;
-  ngOnInit(): void {
-      this.currentUser$ = this.accountService.currentUser$;
-  }
 
-  getCurrentUser() {
-    this.accountService.currentUser$.subscribe({
-      next: user => this.loggedIn = !!user,
-      error: error => console.log(error)
-    })
-  }
+  ngOnInit(): void {  }
 
   login(){
     this.accountService.login(this.model).subscribe({
       next: response => {
-        console.log(response)  
+        console.log(response);
       },
       error: error=>console.log(error)
     });
