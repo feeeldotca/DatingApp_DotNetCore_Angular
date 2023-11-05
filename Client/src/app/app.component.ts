@@ -1,5 +1,5 @@
 import { Component, NgModule, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 import { AccountService } from './_services/account.service';
 import { User } from './_models/user';
 
@@ -12,21 +12,14 @@ export class AppComponent implements OnInit {
   title ='Dating App';
   users: any;
   
-  constructor(private http: HttpClient, private accountService: AccountService){}
+  constructor( private accountService: AccountService){}
 
   ngOnInit(): void {
-    
-      this.getUsers();
+    this.setCurrentUser();
+     // this.getUsers();
   }
 
-  getUsers(){
-    // http.get is an observable need a subscribe otherwise it is lazy
-    this.http.get('https://localhost:5001/api/users').subscribe({
-      next: res=> this.users = res,
-      error: err => console.log(err),
-      complete: ()=> console.log("Request has completed!")
-    });
-  }
+
 
   setCurrentUser() {
     const userString = localStorage.getItem('user');

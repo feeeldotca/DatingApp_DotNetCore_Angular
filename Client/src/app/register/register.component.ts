@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-register',
@@ -7,16 +7,16 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
   model: any = {};
-  username:string = "";
-  password:string = "";
-  
+
+  @Input() userFromHomeComponent: any;
+  @Output() cancelRegister = new EventEmitter();
+  constructor() { }
+
   register(){
-    // this.username = model.username;
-    // this.password = model.password;
     console.log(this.model);
   }
 
   cancel() {
-    console.log("cancelled");
+    this.cancelRegister.emit(false);
   }
 }
