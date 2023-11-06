@@ -12,16 +12,6 @@
             name="username" />
     </div>
 
-    <div class="mb-3">
-        <label for="">Who is your favarite user:</label>
-        <select class="form-select">
-            <option *ngFor="let user of userFromHomeComponent" 
-            [value]="user.userName">
-                {{ user.userName }}
-            </option>
-        </select>
-    </div>
-
    <div class="mb-3">
         <label for="">Set your password</label>
         <input type="password" 
@@ -32,6 +22,6 @@
     </div>
     <div class="text-center">
         <button class="btn btn-success me-2" type="submit">Register</button>
-        <button class="btn btn-default me-2" type="submit">Cancel</button>
+        <button class="btn btn-default me-2" type="submit" (click)="cancel()">Cancel</button>
     </div>
 </form>
