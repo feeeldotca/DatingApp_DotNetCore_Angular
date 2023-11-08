@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'members/:id',component: MemberDetailsComponent},
   {path:'lists',component: ListsComponent},
   {path:'messages',component: MessagesComponent},
-  {path:'**',component: MessagesComponent,}
+  {path:'**',component: HomeComponent, pathMatch:'full'}
   
 ];
 
