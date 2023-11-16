@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using API.ServiceExtensions;
+using API.MiddleWare;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,8 @@ builder.Services.AddApplicationServicesExtension(builder.Configuration);
 builder.Services.AddIdentityServiceExtension(builder.Configuration);
 
 var app = builder.Build();
+// use middleware created in fold MiddleWare
+app.UseMiddleware<ExceptionMiddleWare>();
 app.UseCors(builder=>builder.AllowAnyHeader()
                             .AllowAnyMethod()
                             .WithOrigins("https://localhost:4200"));
